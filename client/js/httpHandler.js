@@ -6,20 +6,32 @@
   // TODO: build the swim command fetcher here
   //
 
-  const ajaxGET = () => {
+  const ajaxGETDirection = () => {
     $.ajax({
       type: 'GET',
       url: serverUrl,
-      success: (data) => {
+      // contentType: 'application/json',
+      success: (direction) => {
         // reload the page
-        SwimTeam.move(data);
-        console.log('received info!', data);
+        SwimTeam.move(direction);
+        console.log('received info!', direction);
       }
     });
   };
-  ajaxGET();
+  ajaxGETDirection();
 
-  setInterval(ajaxGET,3000);
+  // const ajaxGETBackground = () => {
+  //   $.ajax({
+  //     type: 'GET',
+  //     url: serverUrl + '/background.jpg',
+  //     data:{},
+  //     contentType: 'background',
+  //     success: (data)
+  //   });
+  // }
+
+
+  setInterval(ajaxGETDirection,5000);
 
 
   /////////////////////////////////////////////////////////////////////

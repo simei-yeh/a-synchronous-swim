@@ -3,7 +3,6 @@ $('body').on('keydown', (event) => {
   if (arrowPress) {
     var direction = arrowPress[1];
     SwimTeam.move(direction.toLowerCase());
-    App.fetch();
   }
 });
 
