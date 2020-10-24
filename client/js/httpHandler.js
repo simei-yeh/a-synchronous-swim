@@ -12,11 +12,14 @@
       url: serverUrl,
       success: (data) => {
         // reload the page
-        console.log('received info!', data)
+        SwimTeam.move(data);
+        console.log('received info!', data);
       }
     });
   };
   ajaxGET();
+
+  setInterval(ajaxGET,3000);
 
 
   /////////////////////////////////////////////////////////////////////
