@@ -20,26 +20,26 @@
   };
   ajaxGETDirection();
 
-  // const ajaxGETBackground = () => {
-  //   $.ajax({
-  //     type: 'GET',
-  //     url: serverUrl + '/background.jpg',
-  //     data:{},
-  //     contentType: 'background',
-  //     success: (data)
-  //   });
-  // }
+  const ajaxGETBackground = () => {
+    $.ajax({
+      type: 'GET',
+      url: serverUrl + '/background.jpg',
+      success: (data) => {
+        console.log('received background!');
+      }
+    });
+  }
 
 
-  //setInterval(ajaxGETDirection,5000);
-
+  setInterval(ajaxGETDirection,10000);
+  ajaxGETBackground();
 
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
   // Note: remember to fix the URL below.
   /////////////////////////////////////////////////////////////////////
 
-  const ajaxFileUplaod = (file) => {
+  const ajaxFileUpload = (file) => {
     var formData = new FormData();
     formData.append('file', file);
     $.ajax({
@@ -49,9 +49,10 @@
       cache: false,
       contentType: false,
       processData: false,
-      success: (e) => {
+      success: (data) => {
         // reload the page
-        window.location = window.location.href;
+        console.log('posted background', data);
+        //window.location = window.location.href;
       }
     });
   };
@@ -71,7 +72,7 @@
       return;
     }
 
-    ajaxFileUplaod(file);
+    ajaxFileUpload(file);
   });
 
 })();

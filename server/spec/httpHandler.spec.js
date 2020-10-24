@@ -29,7 +29,7 @@ describe('server responses', () => {
 
   xit('should respond with 404 to a GET request for a missing background image', (done) => {
     httpHandler.backgroundImageFile = path.join('.', 'spec', 'missing.jpg');
-    let {req, res} = server.mock('FILL_ME_IN', 'GET');
+    let {req, res} = server.mock('127.0.0.1:3000', 'GET');
 
     httpHandler.router(req, res, () => {
       expect(res._responseCode).to.equal(404);
@@ -48,7 +48,7 @@ describe('server responses', () => {
   xit('should respond to a POST request to save a background image', (done) => {
     fs.readFile(postTestFile, (err, fileData) => {
       httpHandler.backgroundImageFile = path.join('.', 'spec', 'temp.jpg');
-      let {req, res} = server.mock('FILL_ME_IN', 'POST', fileData);
+      let {req, res} = server.mock('127.0.0.1:3000', 'POST', fileData);
 
       httpHandler.router(req, res, () => {
         expect(res._responseCode).to.equal(201);
