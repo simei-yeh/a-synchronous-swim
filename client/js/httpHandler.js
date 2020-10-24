@@ -31,7 +31,7 @@
   // }
 
 
-  setInterval(ajaxGETDirection,5000);
+  //setInterval(ajaxGETDirection,5000);
 
 
   /////////////////////////////////////////////////////////////////////

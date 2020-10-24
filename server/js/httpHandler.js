@@ -14,22 +14,22 @@ module.exports.initialize = (queue) => {
 };
 
 module.exports.router = (req, res, next = ()=>{}) => {
-  let message = messagesQueue.dequeue();
+  let message = messagesQueue.dequeue() || '';
   console.log('Serving request type ' + req.method + ' for url ' + req.url);
-  // console.log(path);
-  // console.log(req.contentType);
+  console.log(path);
+  console.log(req.contentType);
   // let background = this.backgroundImageFile.bind(this);
-  res.writeHead(200, headers);
-  res.end(message.toString());
+  // res.writeHead(200, headers);
+  // res.end(message.toString());
 
-  // if (req.url === '/') {
-  //   res.writeHead(200, headers);
-  //   res.end(message.toString());
-  // }
-  // if (req.url === '/background.jpg') {
-  //   res.writeHead(200, headers);
-  //   res.end();
-  // }
+  if (req.url === '/') {
+    res.writeHead(200, headers);
+    res.end(message.toString());
+  }
+  if (req.url === '/background.jpg') {
+    res.writeHead(200, headers);
+    res.end('background');
+  }
 
   // if (req.contentType.is('application/json')) {
 
